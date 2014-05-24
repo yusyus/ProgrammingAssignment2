@@ -1,13 +1,20 @@
-## Put comments here that give an overall description of what your
-## functions do
+##
+## To avoid heavy load on multiple computation of inverse the functions 
+## makeCacheMatrix and cacheSolve allow to compute the inverse once and
+## reuse multiple times.
 
-## Write a short comment describing this function
-
-## Replace from Example
-## makeVector -> makeCacheMatrix
-## numeric -> matrix
-## mean -> Solve
-
+#######################################################
+# fn: makeCacheMatrix ( matrix() )
+# Computes the inverse of an, invertible,given matrix
+# and caches the reversed matrix.
+#
+# Args:
+#   x: a matrix, supposed to be invertible.
+#
+# Returns:
+#   a "special" matrix cached as a list of functions 
+#   manage matrix's values and the values of the inverse
+#   matrix.
 makeCacheMatrix <- function(x = matrix()) {
   m <- NULL
   set <- function(y) {
@@ -22,13 +29,18 @@ makeCacheMatrix <- function(x = matrix()) {
        getSolve = getSolve)
 }
 
-
-
-## Write a short comment describing this function
-
-## Replace from Example
-## mean -> Solve
-
+#######################################################
+# fn: cacheSolve ( makeCacheMatrix() )
+# Computes the inverse of an, invertible, given matrix
+# passed to the makeCacheMatrix function if not cached 
+# and gets the reversed matrix from cache if yet calculated.
+#
+# Args:
+#   x:  a "special" matrix returned by makeCacheMatrix.
+#
+# Returns:
+#   the inverse of the matrix passed to makeCacheMatrix
+#
 cacheSolve <- function(x, ...) {
   m <- x$getSolve()
   if(!is.null(m)) {
