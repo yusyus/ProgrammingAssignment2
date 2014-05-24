@@ -108,30 +108,38 @@ This assignment will be graded via peer assessment.
 
 
 > source("cachematrix.R")
+
 > mym <- matrix ( c(1,0.25,0.25,2),   nrow=2,   ncol=2)
+
 > mym
      [,1] [,2]
 [1,] 1.00 0.25
 [2,] 0.25 2.00
+
 > solve(mym)
            [,1]       [,2]
 [1,]  1.0322581 -0.1290323
 [2,] -0.1290323  0.5161290
+
 > a2m <- makeCacheMatrix(mym)
+
 > cacheSolve(a2m)
            [,1]       [,2]
 [1,]  1.0322581 -0.1290323
 [2,] -0.1290323  0.5161290
-> cacheSolve(a2m)
-getting cached data
-           [,1]       [,2]
-[1,]  1.0322581 -0.1290323
-[2,] -0.1290323  0.5161290
+
 > cacheSolve(a2m)
 getting cached data
            [,1]       [,2]
 [1,]  1.0322581 -0.1290323
 [2,] -0.1290323  0.5161290
+
+> cacheSolve(a2m)
+getting cached data
+           [,1]       [,2]
+[1,]  1.0322581 -0.1290323
+[2,] -0.1290323  0.5161290
+
 > cacheSolve(a2m)
 getting cached data
            [,1]       [,2]
